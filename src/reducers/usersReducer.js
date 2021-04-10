@@ -21,7 +21,7 @@ export default function usersReducer(state = initialState, action) {
             return (
                 {
                     users: state.users.map(user => {
-                        if (user.id == action.payload.author) {
+                        if (user.id === action.payload.author) {
                             user.questions.push(action.payload.id)
                         }
                         return user

@@ -2,30 +2,28 @@ import React, { Component } from 'react';
 import Header from './Header'
 import { getQuestions } from "../actions/questionsActions"
 import { connect } from 'react-redux'
-import LoadingOverlay from 'react-loading-overlay';
 
 class mainFrame extends Component {
-    state = { loading: true }
     componentDidMount() {
+        console.log("called")
         this.props.getQuestions()
         this.setState({ loading: false })
     }
     render() {
         return (
-            <LoadingOverlay
-                active={this.state.loading}
-                spinner
-                text='Loading...'
-            >
+            this.props.questions.length && this.props.currentUser ?
                 <div>
                     <Header />
                     <div>
                         {this.props.children}
                     </div>
-                </div>
-            </LoadingOverlay >
+                </div> : <h1>loading , please wait</h1>
+
         );
     }
 }
-
-export default connect(null, { getQuestions })(mainFrame);
+const mapStateToProps = (state) => ({
+    questions: state.questionsReducer.questions,
+    currentUser: state.loginReducer.currentUser
+})
+export default connect(mapStateToProps, { getQuestions })(mainFrame);

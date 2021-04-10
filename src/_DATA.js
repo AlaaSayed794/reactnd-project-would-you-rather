@@ -2,7 +2,7 @@ let users = {
   pete: {
     id: 'pete',
     name: 'Peter Griffen',
-    avatarURL: "pete.jpg",
+    avatarURL: "/pete.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
   joe: {
     id: 'joe',
     name: 'Joe Swanson',
-    avatarURL: "joe.jpg",
+    avatarURL: "/joe.jpg",
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   quag: {
     id: 'quag',
     name: 'Glenn Quagmire',
-    avatarURL: "quag.jpg",
+    avatarURL: "/quag.jpg",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',

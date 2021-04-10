@@ -1,14 +1,30 @@
-import Layout from './components/Layout'
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Login from './components/Login'
+import MainFrame from './components/MainFrame'
+import { Route } from 'react-router-dom'
+import Home from './components/Home'
+import Question from './components/Question'
+import Leaderboard from './components/Leaderboard'
+import QuestionForm from './components/QuestionForm'
 
 class App extends Component {
     render() {
         return (
-            <Layout />
+            this.props.currentUser ?
+                <MainFrame>
+                    <Route exact path='/' component={Home} />
+                    <Route path='/new-question' component={QuestionForm} />
+                    <Route path='/leaderboard' component={Leaderboard} />
+                    <Route path='/questions/:id' component={Question} />
+                </MainFrame> : <Login />
         )
     }
 }
+const mapStateToProps = (state) => ({
+    currentUser: state.loginReducer.currentUser,
+    questions: state.questionsReducer.questions
+})
+export default connect(mapStateToProps, {})(App);
 
-export default App;
-
+/* <Route path='/questions/:id' component={} />*/

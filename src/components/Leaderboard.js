@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 
 class Leaderboard extends Component {
     render() {
+        console.log(this.props.questions)
         return (
             <ListGroup >
                 {[...this.props.users].sort(function (b, a) { return Object.keys(a.answers).length + a.questions.length - Object.keys(b.answers).length - b.questions.length; }).map(user => (
@@ -18,6 +19,7 @@ class Leaderboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    users: state.usersReducer.users
+    users: state.usersReducer.users,
+    questions: state.questionsReducer.questions
 })
 export default connect(mapStateToProps, {})(Leaderboard);

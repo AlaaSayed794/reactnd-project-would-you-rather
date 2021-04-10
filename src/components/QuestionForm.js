@@ -11,7 +11,6 @@ class QuestionForm extends Component {
         redirect: false
     }
     onChange = (e) => {
-        console.log("hie")
         this.setState(
             {
                 [e.target.name]: e.target.value
