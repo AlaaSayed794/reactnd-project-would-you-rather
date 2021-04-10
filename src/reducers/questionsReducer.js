@@ -1,4 +1,4 @@
-import { GETQUESTIONS } from '../actions/types'
+import { GETQUESTIONS, ADDQUESTION } from '../actions/types'
 
 const initialState = {
     questions: [],
@@ -15,6 +15,13 @@ export default function usersReducer(state = initialState, action) {
                 {
 
                     questions: fetchedQuestions
+                }
+            )
+        case ADDQUESTION:
+            return (
+                {
+
+                    questions: [action.payload, ...state.questions]
                 }
             )
         default: return state;

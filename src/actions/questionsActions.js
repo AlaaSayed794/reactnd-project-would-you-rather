@@ -10,8 +10,8 @@ export const getQuestions = () => dispatch => {
     }))
 }
 export const saveQuestion = (question) => dispatch => {
-    _saveQuestion().then(dispatch({
+    _saveQuestion(question).then(newQuestion => dispatch({
         type: ADDQUESTION,
-        payload: question
+        payload: newQuestion
     }))
 }

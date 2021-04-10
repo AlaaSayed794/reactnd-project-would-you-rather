@@ -8,16 +8,7 @@ class Home extends Component {
     render() {
         return (
 
-            <Tabs defaultActiveKey="answered" id="uncontrolled-tab-example">
-                <Tab eventKey="answered" title="answered questions">
-                    <ListGroup >
-                        {this.props.questions.filter(question => this.props.currentUser.answers[question.id]).map(question => (
-                            <ListGroup.Item key={question.id} >
-                                <QuestionCard question={question} image={this.props.users.find(x => x.id === question.author).avatarURL} />
-                            </ListGroup.Item>
-                        ))}
-                    </ListGroup>
-                </Tab>
+            <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example">
                 <Tab eventKey="unanswered" title="unanswered questions">
                     <ListGroup >
 
@@ -30,7 +21,15 @@ class Home extends Component {
                         ))}
                     </ListGroup>
                 </Tab>
-
+                <Tab eventKey="answered" title="answered questions">
+                    <ListGroup >
+                        {this.props.questions.filter(question => this.props.currentUser.answers[question.id]).map(question => (
+                            <ListGroup.Item key={question.id} >
+                                <QuestionCard question={question} image={this.props.users.find(x => x.id === question.author).avatarURL} />
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                </Tab>
             </Tabs>
 
 
