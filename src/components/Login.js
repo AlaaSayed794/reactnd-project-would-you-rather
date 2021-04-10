@@ -4,13 +4,16 @@ import { login } from '../actions/loginActions'
 import { getUsers } from '../actions/usersActions'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import LoadingOverlay from 'react-loading-overlay';
 
 class Login extends Component {
     state = {
-        username: -1
+        username: -1,
+        loading: true
     }
     componentDidMount() {
         this.props.getUsers()
+        this.setState({ loading: false })
     }
     onSubmit = (e) => {
         e.preventDefault();
@@ -30,22 +33,28 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Login to continue..</h1>
-                <Form onSubmit={this.onSubmit}>
-                    <Form.Group controlId="exampleForm.ControlSelect1" >
-                        <Form.Label>select a user</Form.Label>
-                        <Form.Control as="select" name="username" onChange={this.onChange}>
-                            {this.props.users.map((user, idx) => (
-                                <option key={user.id} value={idx}>{user.name}</option>
-                            ))}
-                        </Form.Control>
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Login
+            <LoadingOverlay
+                active={this.state.loading}
+                spinner
+                text='Would you rather wait a bit or have an unstable site?'
+            >
+                <div>
+                    <h1>Login to continue..</h1>
+                    <Form onSubmit={this.onSubmit}>
+                        <Form.Group controlId="exampleForm.ControlSelect1" >
+                            <Form.Label>select a user</Form.Label>
+                            <Form.Control as="select" name="username" onChange={this.onChange}>
+                                {this.props.users.map((user, idx) => (
+                                    <option key={user.id} value={idx}>{user.name}</option>
+                                ))}
+                            </Form.Control>
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Login
                 </Button>
-                </Form>
-            </div>
+                    </Form>
+                </div>
+            </LoadingOverlay>
         );
     }
 }
