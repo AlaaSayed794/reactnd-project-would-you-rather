@@ -1,4 +1,4 @@
-import { GETUSERS } from '../actions/types'
+import { GETUSERS, ADDQUESTION } from '../actions/types'
 
 const initialState = {
     users: [],
@@ -15,6 +15,17 @@ export default function usersReducer(state = initialState, action) {
                 {
 
                     users: fetchedUsers
+                }
+            )
+        case ADDQUESTION:
+            return (
+                {
+                    users: state.users.map(user => {
+                        if (user.id == action.payload.author) {
+                            user.questions.push(action.payload.id)
+                        }
+                        return user
+                    })
                 }
             )
         default: return state;

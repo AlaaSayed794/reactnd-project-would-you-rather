@@ -5,6 +5,7 @@ import MainFrame from './MainFrame'
 import { Route } from 'react-router-dom'
 import Home from './Home'
 import Question from './Question'
+import Leaderboard from './Leaderboard'
 import QuestionForm from './QuestionForm'
 
 class Layout extends Component {
@@ -13,7 +14,8 @@ class Layout extends Component {
             this.props.currentUser ?
                 <MainFrame>
                     <Route exact path='/' component={Home} />
-                    <Route exact path='/new-question' component={QuestionForm} />
+                    <Route path='/new-question' component={QuestionForm} />
+                    <Route path='/leaderboard' component={Leaderboard} />
                     <Route path='/questions/:id' component={Question} />
                 </MainFrame> : <Login />
         )
