@@ -1,5 +1,5 @@
-import { _getQuestions, _saveQuestion } from "../_DATA"
-import { GETQUESTIONS, ADDQUESTION } from './types'
+import { _getQuestions, _saveQuestion, _saveQuestionAnswer } from "../_DATA"
+import { GETQUESTIONS, ADDQUESTION, ADDANSWER } from './types'
 
 
 export const getQuestions = () => dispatch => {
@@ -13,5 +13,11 @@ export const saveQuestion = (question) => dispatch => {
     _saveQuestion(question).then(newQuestion => dispatch({
         type: ADDQUESTION,
         payload: newQuestion
+    }))
+}
+export const saveAnswer = (answer) => dispatch => {
+    _saveQuestionAnswer(answer).then(dispatch({
+        type: ADDANSWER,
+        payload: answer
     }))
 }

@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Question from './components/Question'
 import Leaderboard from './components/Leaderboard'
 import QuestionForm from './components/QuestionForm'
+import NotFound from './components/NotFound'
 
 class App extends Component {
     render() {
@@ -14,7 +15,7 @@ class App extends Component {
             this.props.currentUser ?
                 <MainFrame>
                     <Route exact path='/' component={Home} />
-                    <Route path='/new-question' component={QuestionForm} />
+                    <Route path='//add' component={QuestionForm} />
                     <Route path='/leaderboard' component={Leaderboard} />
                     <Route path='/questions/:id' component={Question} />
                 </MainFrame> : <Login />
